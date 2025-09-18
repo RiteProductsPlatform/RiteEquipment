@@ -1,0 +1,32 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Ic Api",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/approveRejectOIC"
+        }
+    ],
+    "paths": {
+        "/EXT_PPM_IMP_NONL_ATP_ERP_V2/1.0/impnonlbrcost": {
+            "post": {
+                "operationId": "postEXT_PPM_IMP_NONLB_ATP_ERP1_0Impnonlbrcost",
+                "parameters": [
+                    {
+                        "name": "batch_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "create"
+                }
+            }
+        }
+    }
+}

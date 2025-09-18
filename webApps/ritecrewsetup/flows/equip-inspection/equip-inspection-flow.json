@@ -1,0 +1,8 @@
+{
+  "id": "equip-inspection",
+  "description": "Flow main",
+  "defaultPage": "equipment-reservations-start",
+  "services": {},
+  "types": {},
+  "variables": {}
+}

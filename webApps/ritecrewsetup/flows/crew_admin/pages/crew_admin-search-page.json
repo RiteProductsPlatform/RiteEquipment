@@ -1,0 +1,354 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "currentPage": {
+      "type": "string"
+    },
+    "FACostArray": {
+      "type": "object[]"
+    },
+    "get1113185ProjectsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "projectNameList/get11_13_18_05Projects",
+        "keyAttributes": "ProjectName",
+        "itemsPath": "items",
+        "responseType": "get1113185ProjectsResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "ProjectName"
+          ]
+        }
+      }
+    },
+    "isEdit": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "pagetype": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "ProjectsADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "ProjectsType",
+        "keyAttributes": "ProjectName"
+      }
+    },
+    "RowData": {
+      "type": "MasterDetailsType",
+      "input": "fromCaller"
+
+    },
+    "TaskSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "keyAttributes": "TaskName",
+        "itemsPath": "items",
+        "responseType": "get1113185ProjectsProjectIdChildTasks2Response",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "TaskName"
+          ]
+        },
+        "fetchChain": "get11_13_18_05ProjectsProjectIdChildTasks2Fetch"
+      }
+    },
+    "workordercostArray": {
+      "type": "object[]"
+    },    "backgroundColor": {
+      "type": "string",
+      "defaultValue": "dark-ocean"
+    },
+    "illustrationBackground": {
+      "type": "string",
+      "defaultValue": "https://static.oracle.com/cdn/fnd/gallery/2307.0.2/images/illust-welcome-banner-bg-01.png"
+    },
+    "illustrationForeground": {
+      "type": "string",
+      "defaultValue": "https://static.oracle.com/cdn/fnd/gallery/2307.0.2/images/illust-welcome-banner-fg-01.png"
+    },
+    "imageStretch": {
+      "type": "string",
+      "defaultValue": "none"
+    },
+    "mobileImage": {
+      "type": "string",
+      "defaultValue": "on"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.get1113185ProjectsProjectIdChildTasks2Response": {
+      "endpoint": "get11_13_18_05ProjectsProjectIdChildTasks2",
+      "service": "projectNameList",
+      "path": "response"
+    },
+    "@decorators.get1113185ProjectsResponse": {
+      "endpoint": "get11_13_18_05Projects",
+      "service": "projectNameList",
+      "path": "response"
+    },
+    "@decorators.MasterDetailsType": {
+      "endpoint": "getEquipmentMaster",
+      "service": "TimeRite_Ords_Service",
+      "path": "response-_-items[0]"
+    },
+    "@decorators.ProjectsType": {
+      "endpoint": "get11_13_18_05Projects",
+      "service": "projectNameList",
+      "path": "response-_-items[0]"
+    },
+    "get1113185ProjectsProjectIdChildTasks2Response": {
+      "items": [
+        {
+          "TaskId": "number",
+          "TaskName": "string",
+          "TaskNumber": "string"
+        }
+      ]
+    },
+    "get1113185ProjectsResponse": {
+      "items": [
+        {
+          "ProjectId": "number",
+          "ProjectName": "string",
+          "ProjectNumber": "string"
+        }
+      ]
+    },
+    "MasterDetailsType": {
+      "address_line1": "string",
+      "address_line2": "string",
+      "asset_id": "number",
+      "asset_number": "string",
+      "asset_organization": "string",
+      "ast_date_in_service": "string",
+      "ast_insured_by": "string",
+      "ast_insured_policy": "string",
+      "ast_retired_date": "string",
+      "auto_costing_flag": "string",
+      "bill_rate": "string",
+      "billing_category": "string",
+      "city": "string",
+      "cost_rate": "string",
+      "cost_rate1": "string",
+      "country": "string",
+      "county": "any",
+      "created_by": "any",
+      "creation_date": "string",
+      "default_location": "string",
+      "equip_req_quantity": "string",
+      "equipment_class": "string",
+      "equipment_description": "string",
+      "equipment_id": "number",
+      "equipment_name": "string",
+      "equipment_number": "string",
+      "equipment_sub_class": "string",
+      "equipment_type": "string",
+      "expenditure_org_id": "any",
+      "expenditure_org_name": "string",
+      "file_attachment": "any",
+      "file_content": "string",
+      "file_name": "string",
+      "file_type": "string",
+      "include_in_pm": "any",
+      "inventory_item": "string",
+      "inventory_item_id": "number",
+      "last_update_date": "string",
+      "last_updated_by": "any",
+      "latitude": "string",
+      "lease_end": "string",
+      "lease_rate": "any",
+      "lease_start": "string",
+      "legacy_equipment_num": "any",
+      "life_of_equipment": "string",
+      "longitude": "string",
+      "manufacturer": "string",
+      "manufacturer_id": "any",
+      "margin": "string",
+      "mf_color": "string",
+      "mf_fuel_type": "string",
+      "mf_license_expiry": "string",
+      "mf_license_number": "string",
+      "mf_license_state": "string",
+      "mf_model_number": "string",
+      "mf_model_year": "number",
+      "mf_serial_number": "string",
+      "mf_warranty_code": "string",
+      "mf_weight": "number",
+      "non_labor_resource": "string",
+      "non_labor_resource_org": "string",
+      "organization_id": "any",
+      "organization_name": "any",
+      "owning_status": "any",
+      "person_first_name": "any",
+      "person_id": "any",
+      "person_last_name": "any",
+      "person_middle_name": "any",
+      "person_number": "any",
+      "pm_basis": "any",
+      "po_header_id": "any",
+      "project_id": "number",
+      "project_name": "string",
+      "project_number": "string",
+      "purchase_order": "string",
+      "record_mode": "string",
+      "request_id": "any",
+      "state": "any",
+      "status": "string",
+      "task_id": "number",
+      "task_name": "string",
+      "task_number": "string",
+      "total_capacity_perday": "any",
+      "unit_cost": "string",
+      "utilization_percentage": "string",
+      "vendor_id": "any",
+      "vendor_name": "string",
+      "work_order_number": "string",
+      "zip": "string"
+
+    },
+    "ProjectsType": {
+      "ProjectId": "number",
+      "ProjectName": "string",
+      "ProjectNumber": "string"
+    }
+
+  },
+  "eventListeners": {
+
+    "buttonAction2": {
+      "chains": [
+        {
+          "chain": "CreatePageNavigationAction"
+        }
+      ]
+    },
+    "buttonAction3": {
+      "chains": [
+        {
+          "chain": "RequestPageNavigation"
+        }
+      ]
+    },
+    "cameraFilePickerSelect": {
+      "chains": [
+        {
+          "chain": "FileSelectionAction",
+          "parameters": {
+            "files": "[[ Array.prototype.slice.call($event.detail.files) ]]"
+          }
+        }
+      ]
+    },
+    "iconClick": {
+      "chains": [
+        {
+          "chain": "EditiconClickAction"
+        }
+      ]
+    },
+    "ojSpWp1SpPrimaryAction": {
+      "chains": [
+        {
+          "chain": "PrimaryBtnAction"
+        }
+      ]
+    },
+    "ojSpWp1SpSecondaryAction": {
+      "chains": [
+        {
+          "chain": "BackBtnAction",
+          "parameters": {
+            "actionId": "{{$event.detail.secondaryItem}}"
+          }
+        }
+      ]
+    },
+    "selectValueItem": {
+      "chains": [
+        {
+          "chain": "ProjectValueChangeAction",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "selectValueItem2": {
+      "chains": [
+        {
+          "chain": "TaskValueChangeAction",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+{
+          "parameters": {},
+          "chain": "fetchCostRate"
+        },
+        {
+          "parameters": {},
+          "chain": "Fetchprojects"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-avatar": {
+        "path": "ojs/ojavatar"
+      },
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-file-picker": {
+        "path": "ojs/ojfilepicker"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-sp-welcome-page": {
+        "path": "oj-sp/welcome-page/loader"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+
+    },
+    "modules": {
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      }
+    }
+  }
+}

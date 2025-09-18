@@ -1,0 +1,180 @@
+{
+  "root": "callFunctionValidateGroup",
+  "description": "",
+  "actions": {
+    "forEachInFilteredData": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.FilteredData }}",
+        "actionId": "callFunctionCreateApproveReq"
+      },
+      "outcomes": {
+        "success": "fireNotification3"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutEqpSubmitTimeEntry.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestPutEqpSubmitTimeEntry": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "TimeRite_Ords_Service/putEqpSubmitTimeEntry",
+        "body": "{{ $chain.results.callFunctionCreateApproveReq }}"
+      },
+      "outcomes": {
+        "failure": "callComponentProgressDialogClose2",
+        "success": "callRestPostEXTPPMIMPNONLBATPERP1Impnonlbrcost"
+      }
+    },
+    "callFunctionCreateApproveReq": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "createApproveReq",
+        "params": [
+          "{{ $current.data }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestPutEqpSubmitTimeEntry"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Approve is Success",
+        "displayMode": "transient",
+        "type": "confirmation"
+      },
+      "outcomes": {
+        "success": "callComponentProgressDialogClose"
+      }
+    },
+    "callChainSearchActionBtn": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "searchActionBtn"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostEXTPPMIMPNONLBATPERP1Impnonlbrcost.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestPostEXTPPMIMPNONLBATPERP1Impnonlbrcost": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ApprRejOIC/postEXT_PPM_IMP_NONLB_ATP_ERP1_0Impnonlbrcost",
+        "uriParams": {
+          "batch_id": "{{ $current.data.batch_id }}"
+        }
+      },
+      "outcomes": {
+        "failure": "callComponentProgressDialogClose3",
+        "success": "callRestPostTRTEXT00ARINVVBCS11ARINV"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostTRTEXT00ARINVVBCS11ARINV.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestPostTRTEXT00ARINVVBCS11ARINV": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "icsEndpoint/postTRT_EXT00_AR_INV_VBCS_01_1_0AR_INV",
+        "body": "{{ $current.data.batch_id }}"
+      },
+      "outcomes": {
+        "failure": "callComponentProgressDialogClose4"
+      }
+    },
+    "callComponentProgressDialogOpen": {
+      "module": "vb/action/builtin/callComponentMethodAction",
+      "parameters": {
+        "component": "{{ document.getElementById('progressDialog') }}",
+        "method": "open"
+      },
+      "outcomes": {
+        "success": "forEachInFilteredData"
+      }
+    },
+    "callComponentProgressDialogClose": {
+      "module": "vb/action/builtin/callComponentMethodAction",
+      "parameters": {
+        "component": "{{ document.getElementById('progressDialog') }}",
+        "method": "close"
+      },
+      "outcomes": {
+        "success": "callChainSearchActionBtn"
+      }
+    },
+    "callComponentProgressDialogClose2": {
+      "module": "vb/action/builtin/callComponentMethodAction",
+      "parameters": {
+        "component": "{{ document.getElementById('progressDialog') }}",
+        "method": "close"
+      },
+      "outcomes": {
+        "success": "fireNotification"
+      }
+    },
+    "callComponentProgressDialogClose3": {
+      "module": "vb/action/builtin/callComponentMethodAction",
+      "parameters": {
+        "component": "{{ document.getElementById('progressDialog') }}",
+        "method": "close"
+      },
+      "outcomes": {
+        "success": "fireNotification2"
+      }
+    },
+    "callComponentProgressDialogClose4": {
+      "module": "vb/action/builtin/callComponentMethodAction",
+      "parameters": {
+        "component": "{{ document.getElementById('progressDialog') }}",
+        "method": "close"
+      },
+      "outcomes": {
+        "success": "fireNotification4"
+      }
+    },
+    "callFunctionValidateGroup": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $application.functions ]]",
+        "functionName": "validateGroup",
+        "params": [
+          "SearchValidationgroup"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateGroup ==='valid' ]]"
+      },
+      "outcomes": {
+        "true": "callComponentProgressDialogOpen"
+      }
+    }
+  }
+}

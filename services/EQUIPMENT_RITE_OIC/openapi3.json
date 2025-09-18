@@ -1,0 +1,100 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "OICSERVICE",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/OICSERVICE",
+            "description": "OICSERVICE"
+        }
+    ],
+    "paths": {
+        "/EQUIPMENT_RITE/EQP_FACOSTDETAILS_REST/1.0/TREQPFACostDetailsRest": {
+            "post": {
+                "operationId": "postEQUIPMENT_RITEEQP_FACOSTDETAILS_REST1_0TREQPFACostDetailsRest",
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "create"
+                }
+            }
+        },
+        "/EQUIPMENT_RITE/EQP_MAINTCOSTDETAILS_REST/1.0/TREQPMainCostDetailsREST  ": {
+            "post": {
+                "operationId": "postEQUIPMENT_RITEEQP_MAINTCOSTDETAILS_REST1_0TREQPMainCostDetailsREST",
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "create"
+                }
+            }
+        },
+        "/EQUIPMENT_RITE/EQP_USERS_JOB_ROLES/1.0/UsersJobRoles": {
+            "get": {
+                "operationId": "getEQUIPMENT_RITEEQP_USERS_JOB_ROLES1_0UsersJobRoles",
+                "parameters": [
+                    {
+                        "name": "p_username",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetEQUIPMENT_RITEEQP_USERS_JOB_ROLES1_0UsersJobRoles"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getEQUIPMENT_RITEEQP_USERS_JOB_ROLES1_0UsersJobRoles/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetEQUIPMENT_RITEEQP_USERS_JOB_ROLES1_0UsersJobRoles": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "role_id": {
+                                    "type": "string"
+                                },
+                                "role_name": {
+                                    "type": "string"
+                                },
+                                "role_common_name": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "userjobroles_pk": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

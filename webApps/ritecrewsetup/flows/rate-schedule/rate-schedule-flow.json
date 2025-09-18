@@ -1,0 +1,8 @@
+{
+  "id": "rate-schedule",
+  "description": "Flow main",
+  "defaultPage": "rate-schedule-search",
+  "services": {},
+  "types": {},
+  "variables": {}
+}

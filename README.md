@@ -1,2 +1,1 @@
-# RiteEquipment
-RiteEquipment
+# OceaneeringDeployment

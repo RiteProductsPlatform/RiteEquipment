@@ -1,0 +1,8 @@
+{
+  "id": "equipmentsettings",
+  "description": "Flow main",
+  "defaultPage": "crew-time-entry-start",
+  "services": {},
+  "types": {},
+  "variables": {}
+}

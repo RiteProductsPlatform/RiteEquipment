@@ -1,0 +1,8 @@
+{
+  "id": "crew_admin",
+  "description": "Flow main",
+  "defaultPage": "crew_admin-start",
+  "services": {},
+  "types": {},
+  "variables": {}
+}

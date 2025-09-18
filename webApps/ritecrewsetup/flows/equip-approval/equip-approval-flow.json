@@ -1,0 +1,13 @@
+{
+  "id": "equip-approval",
+  "description": "Flow main",
+  "defaultPage": "equip-approval-start",
+  "services": {},
+  "types": {},
+  "variables": {
+    "selectedReservationNumber": {
+      "type": "string",
+      "input": "fromCaller"
+    }
+  }
+}
